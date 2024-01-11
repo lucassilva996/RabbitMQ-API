@@ -1,24 +1,14 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
 using RabbitMQ.Domain.Models;
 
 namespace RabbitMQ.Infrastructure.Context
 {
-	public class AppDbContext : DbContext
-	{
-		protected readonly IConfiguration Configuration;
-		public AppDbContext(IConfiguration configuration)
-		{
-			Configuration = configuration;
-		}
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+        }
 
-		protected override void OnConfiguring(DbContextOptionsBuilder options)
-		{
-			options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-		}
-
-		public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
-

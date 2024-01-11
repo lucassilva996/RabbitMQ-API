@@ -4,10 +4,27 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <UseAppHost>false</UseAppHost>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\RabbitMQ.Application\RabbitMQ.Application.csproj">
+        <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+      </ProjectReference>
+      <ProjectReference Include="..\RabbitMQ.Infrastructure\RabbitMQ.Infrastructure.csproj">
+        <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+      </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Controller\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Controller\" />
+    </ItemGroup>
 </Project>
